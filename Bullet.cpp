@@ -4,6 +4,9 @@
 #include <QGraphicsScene>
 #include <QList>
 #include <Enemy.h>
+#include <Game.h>
+
+extern Game * game;
 
 Bullet::Bullet(QObject *parent)
     : QObject(parent), QGraphicsRectItem()
@@ -22,6 +25,8 @@ Bullet::Bullet(QObject *parent)
      QList<QGraphicsItem*> colliding_Items = collidingItems();
      for ( int i = 0 , n = colliding_Items.size(); i < n; ++i){
          if (typeid(*colliding_Items[i]) == typeid(Enemy)){
+             game->score->increase();
+
              scene()->removeItem(colliding_Items[i]);
              scene()->removeItem(this);
 

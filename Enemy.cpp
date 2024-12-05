@@ -2,9 +2,12 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include <stdlib.h>
+#include <Game.h>
 
-Enemy::Enemy(QObject *parent)
-    : QObject(parent), QGraphicsRectItem()
+
+extern Game *game;
+
+Enemy::Enemy(QObject *parent) : QObject(parent), QGraphicsRectItem()
 {
     int random_number = rand() % 700 ;
     setPos(random_number, 0);
@@ -22,9 +25,9 @@ Enemy::Enemy(QObject *parent)
 
 void Enemy:: move(){
     setPos(x(),y()+5);
-    if (pos().y() + rect().height()<0){
+    if (pos().y() >600){
+        game->health->decrease();
         scene()->removeItem(this);
         delete this;
-
     }
 }

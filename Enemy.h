@@ -10,6 +10,8 @@ public:
     Enemy(QObject* parent = nullptr);
 public slots:
     void move();
+private:
+    int life_coeficient;
 };
 
 
