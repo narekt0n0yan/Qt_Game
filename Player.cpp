@@ -4,6 +4,16 @@
 #include <QKeyEvent>
 #include <Bullet.h>
 #include <Enemy.h>
+#include <QMediaPlayer>
+#include <QDebug>
+#include <iostream>
+
+
+Player::Player(QGraphicsItem *parent)
+    : QGraphicsRectItem(parent){
+    bulletsound = new QMediaPlayer();
+    bulletsound->setMedia(QUrl( "qrc:/ sounds/Михаил Круг - Владимирский Централ.mp3"));
+}
 
 void Player::keyPressEvent(QKeyEvent *event){
     if( event->key() == Qt::Key_Left){
@@ -20,6 +30,10 @@ void Player::keyPressEvent(QKeyEvent *event){
         Bullet * bullet = new Bullet();
         bullet->setPos(x(),y());
         scene()->addItem(bullet);
+
+        bulletsound->stop();
+        bulletsound->play();
+        std::cout << "aaaaaaa" <<std::endl;
     }
 }
 

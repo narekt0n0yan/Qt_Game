@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ sounds">
+        <file>Mixail Krug Game.mp3</file>
+        <file>Mixail Krug Bullet.mp3</file>
+    </qresource>
+</RCC>

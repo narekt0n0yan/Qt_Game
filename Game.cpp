@@ -1,6 +1,12 @@
 #include "Game.h"
-#include "Score.h"
 #include <QTimer>
+#include <QGraphicsItem>
+#include <QFont>
+#include "Enemy.h"
+#include <QMediaPlayer>
+
+
+
 
 Game::Game(QWidget *parent):
     QGraphicsView(parent)
@@ -30,5 +36,9 @@ Game::Game(QWidget *parent):
     QTimer * timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
     timer->start(2000);
+
+    // QMediaPlayer * music = new QMediaPlayer();
+    // music->setMedia(QUrl("qrc:/ sounds/Михаил Круг - Девочка-Пай.mp3"));
+    // music->play();
 
 }
